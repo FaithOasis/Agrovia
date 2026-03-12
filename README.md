@@ -1,12 +1,45 @@
-# React + Vite
+# Agrovia (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains the frontend for the Agrovia dashboard built with React and Vite.
 
-Currently, two official plugins are available:
+## Quickstart
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Install dependencies:
 
-## Expanding the ESLint configuration
+```
+npm install
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Run development server:
+
+```
+npm run dev
+```
+
+Build for production:
+
+```
+npm run build
+```
+
+Preview production build locally:
+
+```
+npm run start
+```
+
+## Scripts
+- `dev`: Start Vite dev server
+- `build`: Build production assets with Vite
+- `start`: Preview built assets locally
+- `lint`: Run ESLint
+- `test`: Placeholder test script
+
+## Contributing
+See `CONTRIBUTING.md` for contribution guidelines and how to open issues or pull requests.
+
+## License
+This project is licensed under the MIT License — see `LICENSE`.
+
+## Contact
+If you need help, open an issue or contact the maintainer on the repository.
