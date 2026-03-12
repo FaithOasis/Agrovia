@@ -1,0 +1,109 @@
+### Test 1: Register User 1
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "username": "farmer1",
+  "email": "farmer1@example.com",
+  "password": "password123",
+  "fullName": "John Farmer"
+}
+
+> {%
+    client.test("User registered successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+%}
+
+### Test 2: Register User 2
+POST http://localhost:8080/api/auth/signup
+Content-Type: application/json
+
+{
+  "username": "farmer2",
+  "email": "farmer2@example.com",
+  "password": "password123",
+  "fullName": "Sarah Farmer"
+}
+
+### Test 3: Login as Farmer 1
+POST http://localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+  "username": "farmer1",
+  "password": "password123"
+}
+
+> {%
+    client.global.set("token1", response.body.token);
+    client.test("Login successful", function() {
+        client.assert(response.body.token !== undefined, "No token received");
+    });
+%}
+
+### Test 4: Login as Farmer 2
+POST http://localhost:8080/api/auth/signin
+Content-Type: application/json
+
+{
+  "username": "farmer2",
+  "password": "password123"
+}
+
+> {%
+    client.global.set("token2", response.body.token);
+%}
+
+### Test 5: Create a Post (Farmer 1)
+POST http://localhost:8080/api/posts
+Content-Type: application/json
+Authorization: Bearer {{token1}}
+
+{
+  "title": "Tomato Farming Tips",
+  "content": "I've been growing tomatoes successfully for 5 years. Here are my best practices...",
+  "category": "CROP_ADVICE",
+  "imageUrl": ""
+}
+
+> {%
+    client.global.set("postId", response.body.data.id);
+    client.test("Post created successfully", function() {
+        client.assert(response.body.data.id !== undefined, "No post ID received");
+    });
+%}
+
+### Test 6: Get All Posts
+GET http://localhost:8080/api/posts
+Authorization: Bearer {{token1}}
+
+### Test 7: Comment on Post (Farmer 2)
+POST http://localhost:8080/api/comments
+Content-Type: application/json
+Authorization: Bearer {{token2}}
+
+{
+  "content": "Great tips! When is the best time to plant tomatoes?",
+  "postId": {{postId}}
+}
+
+### Test 8: Like the Post (Farmer 2)
+POST http://localhost:8080/api/posts/{{postId}}/like
+Authorization: Bearer {{token2}}
+
+### Test 9: Check Notifications (Farmer 1)
+GET http://localhost:8080/api/notifications
+Authorization: Bearer {{token1}}
+
+### Test 10: Check Unread Count (Farmer 1)
+GET http://localhost:8080/api/notifications/unread/count
+Authorization: Bearer {{token1}}
+
+### Test 11: Mark All as Read (Farmer 1)
+POST http://localhost:8080/api/notifications/mark-all-read
+Authorization: Bearer {{token1}}
+
+### Test 12: Verify No Unread Notifications
+GET http://localhost:8080/api/notifications/unread/count
+Authorization: Bearer {{token1}}
