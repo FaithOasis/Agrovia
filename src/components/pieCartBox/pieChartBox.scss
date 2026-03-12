@@ -1,0 +1,71 @@
+@use "../../styles/responsive.scss" as *;
+
+.pieChartBox {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+  padding: 20px;
+
+  h1 {
+    font-size: 20px;
+    font-weight: 600;
+
+    @include xxl {
+      font-size: 24px;
+    }
+  }
+
+  .chart {
+    width: 100%;
+    height: 250px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .options {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; 
+    gap: 20px;
+    font-size: 14px;
+
+    .option {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+      min-width: 80px; 
+
+      .title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        white-space: nowrap; 
+
+        .dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+      }
+
+      span:last-child {
+        font-weight: 600;
+      }
+    }
+  }
+
+  @include sm {
+    .options {
+      justify-content: center;
+      text-align: center;
+
+      .option {
+        align-items: center;
+      }
+    }
+  }
+}

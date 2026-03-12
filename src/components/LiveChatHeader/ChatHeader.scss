@@ -1,0 +1,65 @@
+$primary-color: rgb(24, 144, 255);
+$text-color: white;
+$secondary-text: rgb(153, 153, 153);
+$font-main: "Avenir", sans-serif;
+$transition-time: 0.66s;
+
+
+.ce-custom-chat-header {
+  display: flex;
+  position: relative;
+  margin-left: 12px;
+  width: calc(100% - 24px);
+  height: 86px;
+
+  // 🧑‍🤝‍🧑 Avatars area
+  .ce-custom-chat-avatars {
+    width: calc(40px + 14px + 14px);
+    height: 100%;
+    display: block;
+  }
+
+
+  .ce-custom-header-text {
+    display: block;
+    width: calc(100% - 168px);
+    height: 100%;
+    position: relative;
+
+    .ce-custom-header-title {
+      color: $text-color;
+      font-size: 13px;
+      font-family: $font-main;
+      padding-top: 26.5px;
+    }
+
+    .ce-custom-header-subtitle {
+      font-family: $font-main;
+      color: $secondary-text;
+      font-size: 11px;
+    }
+  }
+
+  .ce-custom-header-icon-wrapper {
+    display: block;
+    width: 100px;
+    height: 100%;
+    text-align: right;
+
+    .ce-custom-header-icon {
+      margin-left: 12px;
+      padding-top: calc((86px - 15px) / 2);
+      cursor: pointer;
+      color: $secondary-text;
+      transition: all $transition-time ease;
+
+      &:hover {
+        color: $primary-color !important;
+      }
+
+      &.loading {
+        color: $secondary-text;
+      }
+    }
+  }
+}

@@ -1,0 +1,101 @@
+.userinfo {
+  flex-shrink: 0;
+  height: 60px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #202c33;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+  .user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+
+    .avatarWrapper {
+      position: relative;
+      flex-shrink: 0;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        background: #2a3942;
+      }
+
+      .status {
+        position: absolute;
+        right: 1px;
+        bottom: 1px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #25d366;
+        border: 2px solid #202c33;
+      }
+    }
+
+    .details {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      h3 {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: #e9edef;
+        line-height: 1.2;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      p {
+        margin: 2px 0 0;
+        font-size: 12px;
+        color: #8696a0;
+        line-height: 1.2;
+      }
+    }
+  }
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+
+    .iconBtn {
+      width: 34px;
+      height: 34px;
+      border: none;
+      border-radius: 50%;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.2s ease;
+
+      img {
+        width: 17px;
+        height: 17px;
+        object-fit: contain;
+        opacity: 0.75;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.06);
+
+        img {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,104 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff; 
+}
+
+a {
+  color: #3273dc;
+  transition: color 0.3s ease;
+}
+
+a:hover,
+a:focus {
+  color: #1a4dbd;
+  outline: none;
+}
+
+a:focus {
+  outline: 2px solid #3273dc;
+  outline-offset: 2px;
+}
+
+/* Center container */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  
+  background: 
+    linear-gradient(rgba(18, 18, 18, 0.7), rgba(18, 18, 18, 0.7)),
+    url("https://wallpapercave.com/wp/wp1950223.jpg") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Blurred card */
+.auth-card {
+  background: rgba(30, 30, 30, 0.8); /* fallback for no backdrop-filter */
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 380px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  margin: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+/* Backdrop filter support */
+@supports (backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px)) {
+  .auth-card {
+    background: rgba(30, 30, 30, 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+  }
+}
+
+/* Responsive padding for small screens */
+@media (max-width: 400px) {
+  .auth-card {
+    padding: 1rem;
+  }
+}
+
+/* Button styling example */
+button {
+  background-color: #3273dc;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+button:focus {
+  background-color: #1a4dbd;
+  outline: none;
+}
+
+button:focus {
+  outline: 2px solid #3273dc;
+  outline-offset: 2px;
+}
+
+
+
+

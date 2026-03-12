@@ -1,0 +1,133 @@
+/* PAGE BACKGROUND */
+
+.signup-page{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:40px;
+
+  background:
+    linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.75)),
+    url("/seed.webp");
+
+  background-size:cover;
+  background-position:center;
+}
+
+.auth-card{
+  width:900px;       
+  max-width:95%;
+  padding:40px;
+  border-radius:20px;
+
+  background:rgba(15,23,42,0.85);
+  backdrop-filter:blur(10px);
+
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);
+}
+/* FORM GRID */
+
+.signup-grid{
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:30px;
+  align-items:start;
+}
+
+/* SIDE SECTIONS */
+
+.signup-section{
+  display:flex;
+  flex-direction:column;
+}
+
+/* SECTION TITLES */
+
+.section-title{
+  color:#4ade80;
+  font-weight:600;
+  margin-bottom:15px;
+  font-size:.95rem;
+}
+
+/* VERTICAL DIVIDER */
+
+.signup-divider{
+  width:1px;
+  height:100%;
+  background:rgba(255,255,255,0.1);
+}
+
+/* INPUTS */
+
+.input{
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.08);
+  color:white;
+  transition:.25s;
+}
+
+.input::placeholder{
+  color:rgba(255,255,255,0.5);
+}
+
+.input:focus{
+  border-color:#22c55e;
+  box-shadow:0 0 0 2px rgba(34,197,94,.25);
+}
+
+/* SELECT */
+
+.select select{
+  background:#1e293b;
+  color:white;
+  border:none;
+}
+
+select option{
+  background:#1e293b;
+  color:white;
+}
+
+/* PASSWORD TOGGLE */
+
+.password-wrapper{
+  position:relative;
+}
+
+.password-toggle{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
+}
+
+/* BUTTON */
+
+.signup-button{
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  border:none;
+  font-weight:600;
+  transition:.25s;
+}
+
+.signup-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 25px rgba(34,197,94,.35);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px){
+
+  .signup-grid{
+    grid-template-columns:1fr;
+  }
+
+  .signup-divider{
+    display:none;
+  }
+
+}
