@@ -13,8 +13,8 @@ public class ResourceResponse {
     private BigDecimal pricePerWeek;
     private BigDecimal depositAmount;
     private String location;
-    private Double latitude;
-    private Double longitude;
+    private BigDecimal latitude;
+    private BigDecimal longitude;
     private Integer deliveryRadius;
     private String brand;
     private String model;
@@ -118,19 +118,19 @@ public class ResourceResponse {
         this.location = location;
     }
 
-    public Double getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Double latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
-    public Double getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 

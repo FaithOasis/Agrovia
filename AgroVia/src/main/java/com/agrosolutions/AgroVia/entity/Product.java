@@ -41,8 +41,7 @@ public class Product {
     @JoinColumn(name = "seller_id", nullable = false)
     private User seller;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
+    @Enumerated(EnumType.STRING)
     private PostCategory category;
 
     @Column(name = "created_at", nullable = false, updatable = false)

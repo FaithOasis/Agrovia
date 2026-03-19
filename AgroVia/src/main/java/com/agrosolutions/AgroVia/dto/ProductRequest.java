@@ -10,7 +10,7 @@ public class ProductRequest {
     private String unit;
     private Boolean isNegotiable;
     private String imageUrl;
-    private Long categoryId;
+    private String category;
 
     // Default constructor
     public ProductRequest() {
@@ -73,11 +73,11 @@ public class ProductRequest {
         this.imageUrl = imageUrl;
     }
 
-    public Long getCategoryId() {
-        return categoryId;
+    public String getCategory() {
+        return category;
     }
 
-    public void setCategoryId(Long categoryId) {
-        this.categoryId = categoryId;
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

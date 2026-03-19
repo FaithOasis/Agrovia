@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "resources")
+@Table(name = "resource")
 public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,10 +43,10 @@ public class Resource {
     private String location;
 
     @Column(precision = 10, scale = 8)
-    private Double latitude;
+    private BigDecimal latitude;
 
     @Column(precision = 11, scale = 8)
-    private Double longitude;
+    private BigDecimal longitude;
 
     @Column(name = "delivery_radius")
     private Integer deliveryRadius; // in kilometers
@@ -59,8 +59,8 @@ public class Resource {
 
     private Integer year;
 
-    @Column(length = 50)
-    private String condition; // NEW, LIKE_NEW, GOOD, FAIR, POOR
+    @Column(name = "",length = 50)
+    private String equipment_condition; // NEW, LIKE_NEW, GOOD, FAIR, POOR
 
     @Column(name = "quantity_available")
     private Integer quantityAvailable = 1;
@@ -199,19 +199,19 @@ public class Resource {
         this.location = location;
     }
 
-    public Double getLatitude() {
+    public BigDecimal getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(Double latitude) {
+    public void setLatitude(BigDecimal latitude) {
         this.latitude = latitude;
     }
 
-    public Double getLongitude() {
+    public BigDecimal getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(Double longitude) {
+    public void setLongitude(BigDecimal longitude) {
         this.longitude = longitude;
     }
 
@@ -248,11 +248,11 @@ public class Resource {
     }
 
     public String getCondition() {
-        return condition;
+        return equipment_condition;
     }
 
     public void setCondition(String condition) {
-        this.condition = condition;
+        this.equipment_condition = condition;
     }
 
     public Integer getQuantityAvailable() {

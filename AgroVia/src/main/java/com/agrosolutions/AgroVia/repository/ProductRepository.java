@@ -1,5 +1,6 @@
 package com.agrosolutions.AgroVia.repository;
 
+import com.agrosolutions.AgroVia.entity.PostCategory;
 import com.agrosolutions.AgroVia.entity.Product;
 import com.agrosolutions.AgroVia.entity.User;
 import org.springframework.data.domain.Page;
@@ -22,12 +23,12 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     // Search products with multiple filters
     @Query("SELECT p FROM Product p WHERE " +
-            "(:categoryId IS NULL OR p.category.id = :categoryId) AND " +
+            "(:category IS NULL OR p.category = :category) AND " +
             "(:minPrice IS NULL OR p.price >= :minPrice) AND " +
             "(:maxPrice IS NULL OR p.price <= :maxPrice) AND " +
             "(:status IS NULL OR p.status = :status) AND " +
             "(:searchTerm IS NULL OR LOWER(p.title) LIKE LOWER(CONCAT('%', :searchTerm, '%')) OR LOWER(p.description) LIKE LOWER(CONCAT('%', :searchTerm, '%')))")
-    Page<Product> searchProducts(@Param("categoryId") Long categoryId,
+    Page<Product> searchProducts(@Param("category") PostCategory category,
                                  @Param("minPrice") BigDecimal minPrice,
                                  @Param("maxPrice") BigDecimal maxPrice,
                                  @Param("status") Product.ProductStatus status,
@@ -45,7 +46,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Long countBySeller(User seller);
 
     // Find products by category
-    Page<Product> findByCategoryId(Long categoryId, Pageable pageable);
+    Page<Product> findByCategory(PostCategory category, Pageable pageable);
 
     // Find products by price range
     Page<Product> findByPriceBetween(BigDecimal minPrice, BigDecimal maxPrice, Pageable pageable);

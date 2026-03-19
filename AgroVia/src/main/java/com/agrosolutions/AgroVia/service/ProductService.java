@@ -7,7 +7,6 @@ import com.agrosolutions.AgroVia.exception.ResourceNotFoundException;
 import com.agrosolutions.AgroVia.exception.UnauthorizedException;
 import com.agrosolutions.AgroVia.entity.PostCategory;
 import com.agrosolutions.AgroVia.entity.Product;
-import com.agrosolutions.AgroVia.repository.PostCategoryRepository;
 import com.agrosolutions.AgroVia.repository.ProductRepository;
 import com.agrosolutions.AgroVia.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +28,7 @@ public class ProductService {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private PostCategoryRepository categoryRepository;
+    private PostCategory category;
 
     // Get current logged in user
     private User getCurrentUser() {
@@ -65,12 +63,14 @@ public class ProductService {
         product.setSeller(currentUser);
         product.setStatus(Product.ProductStatus.AVAILABLE);
 
-        // Set category if provided - Since PostCategory is an enum, we need to convert the ID to enum value
-        if (request.getCategoryId() != null) {
-            // You need to map categoryId to PostCategory enum
-            // This depends on how you store categories in your database
-            // For now, we'll leave it commented until we see your Product entity
-            // product.setCategory(mapToPostCategory(request.getCategoryId()));
+
+        if (request.getCategory() != null) {
+            try{
+                PostCategory category = PostCategory.valueOf(request.getCategory().toUpperCase());
+                product.setCategory(category);
+            }catch(IllegalArgumentException e){
+                throw new BadRequestException("Invalid category:" + request.getCategory());
+            }
         }
 
         Product savedProduct = productRepository.save(product);
@@ -111,8 +111,8 @@ public class ProductService {
         product.setImageUrl(request.getImageUrl());
 
         // Update category if provided
-        if (request.getCategoryId() != null) {
-            // product.setCategory(mapToPostCategory(request.getCategoryId()));
+        if (request.getCategory() != null) {
+            // product.setCategory(mapToPostCategory(request.getCategory()));
         }
 
         Product updatedProduct = productRepository.save(product);
@@ -163,7 +163,7 @@ public class ProductService {
         Product.ProductStatus productStatus = status != null ?
                 Product.ProductStatus.valueOf(status) : Product.ProductStatus.AVAILABLE;
 
-        return productRepository.searchProducts(categoryId, minPrice, maxPrice,
+        return productRepository.searchProducts(category, minPrice, maxPrice,
                         productStatus, searchTerm, pageable)
                 .map(this::mapToProductResponse);
     }
